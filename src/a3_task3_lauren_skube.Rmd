@@ -11,6 +11,7 @@ library(tidyverse)
 library(janitor)
 library(here)
 library(kableExtra)
+library(lubridate)
 ```
 
 ## Summary 
@@ -51,6 +52,28 @@ urchins_stats <- urchins %>%
 ## Section 1 - Part 3: Analysis of exploratory graphs and summary statistics 
 
 
+## Section 2: Explore purple urchin counts by site and year 
 
+```{r, message=FALSE, warning=FALSE}
+urchins_clean <- urchins %>% 
+  mutate(date = mdy(date)) # Change the dates to proper format and the class to "Date"
+class(urchins_clean$date) # Check the class of the date column
+
+purple_urchins <- urchins_clean %>%  # Create a new subset called "purple_urchins"
+  filter(common_name == "Purple Urchin") %>% # Only keep data where the common name is Purple Urchin
+  mutate(year = year(date)) %>% # Create a new column called "year" that contains only the year
+  mutate(site_full = case_when( # Create a new column called "site_full" that contains the full name of the site 
+    site %in% "NAPL" ~ "Naples Reef", 
+    site %in% "AQUE" ~ "Arroyo Quemado Reef" , 
+    site %in% "CARP" ~ "Carpinteria Reef" , 
+    site %in% "MOHK" ~ "Mohawk Reef" , 
+    site %in% "IVEE" ~ "Isla Vista Reef" # list the current name first and then what it should be called in the new column following the "~"
+  ))
+  
+```
+ 
+## Section 2: Summary table 
+Create a summary table containing the total number of purple urchins observed by site and year starting from the purple_urchins subset 
+ 
 
 
