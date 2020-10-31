@@ -1,0 +1,56 @@
+---
+title: "a3_task3_lauren_skube"
+author: "Lauren Skube"
+date: "10/30/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(janitor)
+library(here)
+library(kableExtra)
+```
+
+## Summary 
+
+
+```{r}
+# read in data using the here() function 
+urchins <- read.csv(here("data" , "urchins.csv")) %>% 
+  clean_names() # convert column names to lower_snake_case
+```
+
+## Section 1 - Part 1: Exploratory data visualization 
+Create a histogram and a boxplot to compare distribution sizes of purple and red urchins. 
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(data = urchins, aes(x= size)) + 
+  geom_histogram(bins = 15) + # Create a histogram and change the number of bins 
+  facet_wrap(~ common_name) + # To create a multi-panel plot separated by common name 
+  labs(x= "Urchin diameter (cm)") # Update axis labels 
+
+ggplot(data = urchins, aes(x = common_name, y = size)) + 
+  geom_boxplot() + # Create a box plot from the urchins data
+  labs(x = "Common name" , y = "Urchin diameter (cm)") # Update axis labels 
+```
+
+## Section 1 - Part 2: Descriptive statistics table 
+Here I create a summary table that contains the mean, median, standard deviation, and sample size for purple and red urchins. 
+
+```{r, message=FALSE, warning=FALSE}
+urchins_stats <- urchins %>% 
+  group_by(common_name) %>% # Use the group_by() and summarize() combo to create a table of summary statistics for urchin size separated by common name 
+  summarize(mean_size = mean(size), 
+            median_size = median(size), 
+            sd_size = sd(size), 
+            n = n())
+```
+
+## Section 1 - Part 3: Analysis of exploratory graphs and summary statistics 
+
+
+
+
+
