@@ -15,7 +15,7 @@ library(lubridate)
 ```
 
 ## Summary 
-
+In this document, I use red and purple urchin data from the Santa Barbara LTER Project to practice analyzing and visualizing data and summary statistics. I also practice version control and project management using GitHub.
 
 ```{r}
 # read in data using the here() function 
@@ -47,10 +47,19 @@ urchins_stats <- urchins %>%
             median_size = median(size), 
             sd_size = sd(size), 
             n = n())
+  kbl(urchins_stats) %>% 
+  kable_styling()
+  
+  # Actual difference in mean urchin diameter 
+  6.776489 - 4.469797
+  
+  # Percent differences in mean urchin diameter 
+  (6.776489 - 4.469797)/ 6.776489 * 100
 ```
 
-## Section 1 - Part 3: Analysis of exploratory graphs and summary statistics 
 
+## Section 1 - Part 3: Analysis of exploratory graphs and summary statistics 
+The graph for purple urchins is left skewed and has a central tendency of 4.47 cm. The graph for red urchins is closer to a normal distribution (symmetric) and has a central tendency of 6.78 cm. The difference in mean urchin diameter for purple urchins and red urchins is 2.307 cm, and the percent difference is 34.04%.The range of red urchin diameter measurements is larger than the range of purple urchin diameter measurements because the graph for red urchins is wider and more spread along the x-axis, whereas the graph for purple urchins is more narrow. 
 
 ## Section 2: Explore purple urchin counts by site and year 
 
@@ -74,6 +83,35 @@ purple_urchins <- urchins_clean %>%  # Create a new subset called "purple_urchin
  
 ## Section 2: Summary table 
 Create a summary table containing the total number of purple urchins observed by site and year starting from the purple_urchins subset 
+ 
+```{r}
+purple_summary <- purple_urchins %>% # create a table containing the number of purple urchins per sute and year
+  count(year, site_full)
+
+ggplot(data = purple_summary, aes(x= year, y = n)) +
+  geom_col(aes(fill= site_full), show.legend = FALSE) + 
+  facet_wrap(~site_full) +
+  labs(x= "Year", 
+       y = "Total Count of Purple Urchins")
+  
+```
+ 
+ ## End of task
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
 
 
