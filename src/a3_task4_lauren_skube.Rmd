@@ -1,0 +1,42 @@
+---
+title: "a3_task4_lauren_skube"
+author: "Lauren Skube"
+date: "11/1/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(janitor)
+library(here)
+library(lubridate)
+```
+
+## Summary 
+
+```{r}
+# Read in the urchins.csv data 
+urchins <- read.csv(here("data" , "urchins.csv"))
+```
+
+## Wrangle the data 
+
+```{r}
+# Create a new subset called naple_purple_urchins
+napl_purple_urchins <- urchins %>% 
+  clean_names() %>% # Convert all column names to lower_snake_case
+  mutate(date = mdy(date)) %>% # Convert date column to "Date" class
+  mutate(year = year(date) , # Create a new column containing the year
+         month = month(date)) %>%  # Create a new column containing the month
+
+# Filter the urchins data 
+  filter(common_name == "Purple Urchin" , # Only include Purple Urchins
+         year == 2010, # Only include observation from 2010..
+         month == 1, # And from January...
+         site == "NAPL") %>% # And from the Naples Reef site 
+  group_by(treatment)
+  
+```
+
+## Create Exploratory Graphs 
