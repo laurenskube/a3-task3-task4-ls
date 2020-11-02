@@ -22,8 +22,8 @@ urchins <- read.csv(here("data" , "urchins.csv"))
 
 ## Wrangle the data 
 
-```{r}
-# Create a new subset called naple_purple_urchins
+```{r, message=FALSE, warning=FALSE}
+# Create a new subset called napl_purple_urchins
 napl_purple_urchins <- urchins %>% 
   clean_names() %>% # Convert all column names to lower_snake_case
   mutate(date = mdy(date)) %>% # Convert date column to "Date" class
@@ -39,4 +39,57 @@ napl_purple_urchins <- urchins %>%
   
 ```
 
-## Create Exploratory Graphs 
+## Exploratory graphs 
+
+```{r, message=FALSE, warning=FALSE}
+# Create a quantile-quantile graph to compare the sample to normality
+ggplot(data = napl_purple_urchins, aes(sample = size )) + 
+  geom_qq() + 
+  facet_wrap(~treatment) + # To separate by treatment type
+  labs(x = "Urchin diameter (cm)" )
+```
+
+```{r}
+# Create a histogram to compare the sample to normality 
+ggplot(data = napl_purple_urchins, aes(x = size)) + 
+  geom_histogram(bins = 12) + 
+  facet_wrap(~treatment) 
+```
+
+## Takeaways from the graphs:
+
+## Find summary statistics 
+
+```{r, message=FALSE, warning=FALSE}
+treatment_stats <- napl_purple_urchins %>% 
+  group_by(treatment) %>% 
+  summarise(mean_treatment = mean(size), 
+            sd_treatment = sd(size), 
+            n = n(), 
+            min_treatment = min(size), 
+            max_treatment = max(size))
+```
+
+## Perform a two-sample t-test 
+- This will compare the means between the annual and the control groups
+- Start by creating vectors for size observations from each sample
+
+```{r, message=FALSE, warning=FALSE}
+# Create vectors containing observations for each sample 
+control_sample <- napl_purple_urchins %>% 
+  filter(treatment == "CONTROL") %>% 
+  pull(size) # Create a vector for control group observations
+
+annual_sample <- napl_purple_urchins %>% 
+  filter(treatment == "ANNUAL") %>% 
+  pull(size) # Create a vector for the "annual" group observations
+
+# Run a two-sample t-test using the vectors as inputs
+t.test(annual_sample, control_sample)
+  
+```
+
+
+
+
+
