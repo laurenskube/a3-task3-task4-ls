@@ -85,7 +85,7 @@ purple_urchins <- urchins_clean %>%  # Create a new subset called "purple_urchin
 Create a summary table containing the total number of purple urchins observed by site and year starting from the purple_urchins subset 
  
 ```{r}
-purple_summary <- purple_urchins %>% # create a table containing the number of purple urchins per sute and year
+purple_summary <- purple_urchins %>% # create a table containing the number of purple urchins per site and year
   count(year, site_full)
 
 ggplot(data = purple_summary, aes(x= year, y = n)) +
