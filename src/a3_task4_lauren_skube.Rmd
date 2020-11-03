@@ -14,6 +14,7 @@ library(lubridate)
 ```
 
 ## Summary 
+In this document I create a new subset from the urchins data. I then use this subset to practice creating exploratory graphs (histogram and QQ-plot) and tables of summary statistics for a statistical analysis. 
 
 ```{r}
 # Read in the urchins.csv data 
@@ -57,6 +58,7 @@ ggplot(data = napl_purple_urchins, aes(x = size)) +
 ```
 
 ## Takeaways from the graphs:
+The QQ-plots follow a relatively linear pattern, with a few outliers on each end for both groups. The histograms don't really appear to have a normal distribution. Both groups have values on either side of the central tendency that occur more frequently than the central value. The control group is also right skewed. 
 
 ## Find summary statistics 
 
@@ -99,13 +101,13 @@ t.test(annual_sample, control_sample)
 ```
 
 
-The mean of the Naples Reef annual sample (where giant kelp is removed once each winter) is 3.92 cm. with a standard deviation of 0.966. The mean of the control sample (where giant kelp is left intact) is 3.73 cm with a standard deviation of 0.867. The actual difference between the two means is 0.191 cm and the percent difference is 4.99%. Without considering the p-value, there doesn't seem to be a very strong difference in means between the two groups. When you include consideration of the p-value, which is 0.2536, it further confirms that it's not very likely these are two groups with different means. 
+The mean of the Naples Reef annual sample (where giant kelp is removed once each winter) is 3.92 cm. with a standard deviation of 0.966. The mean of the control sample (where giant kelp is left intact) is 3.73 cm with a standard deviation of 0.867. The actual difference between the two means is 0.191 cm and the percent difference is 4.99%. Without even considering the p-value, there already doesn't seem to be a very strong difference in means between the two groups. When you include consideration of the p-value, which is 0.2536, it further confirms that it's not very likely these are two groups with different means. 
 
-??? What does the confidence interval tell us here?? ask in office hours! 
+*??? What does the confidence interval tell us here?? ask in office hours!*
 
 ## Meaning of the p-value
 
-
+The p-value from the two-sample t-test is 0.2536. This means that IF the null hypothesis is true (that there is no difference in means between the annual and control groups), there is a 25.36% chance that the annual sample mean could have been at least as different from the control group mean as was observed by random chance. Statistically speaking, this is a high probability that the difference in means could have occurred by chance, so it is not sufficient to reject the null hypothesis and conclude that these two groups have significantly different means. The removal of kelp once during winter at the Naples Reef site does not seem to have a significant effect on urchin size. 
 
 
 
