@@ -86,8 +86,24 @@ annual_sample <- napl_purple_urchins %>%
 
 # Run a two-sample t-test using the vectors as inputs
 t.test(annual_sample, control_sample)
+
   
 ```
+
+```{r}
+# Actual difference between means: 
+3.916667-3.725806
+
+# Percent difference between means: 
+0.190861/((3.91667 + 3.72586)/2) * 100
+```
+
+
+The mean of the Naples Reef annual sample (where giant kelp is removed once each winter) is 3.92 cm. with a standard deviation of 0.966. The mean of the control sample (where giant kelp is left intact) is 3.73 cm with a standard deviation of 0.867. The actual difference between the two means is 0.191 cm and the percent difference is 4.99%. Without considering the p-value, there doesn't seem to be a very strong difference in means between the two groups. When you include consideration of the p-value, which is 0.2536, it further confirms that it's not very likely these are two groups with different means. 
+
+??? What does the confidence interval tell us here?? ask in office hours! 
+
+## Meaning of the p-value
 
 
 
