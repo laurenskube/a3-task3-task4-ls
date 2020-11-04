@@ -103,12 +103,11 @@ t.test(annual_sample, control_sample)
 
 The mean of the Naples Reef annual sample (where giant kelp is removed once each winter) is 3.92 cm. with a standard deviation of 0.966. The mean of the control sample (where giant kelp is left intact) is 3.73 cm with a standard deviation of 0.867. The actual difference between the two sample means is 0.191 cm and the percent difference is 4.99%. Without even considering the p-value, there already doesn't seem to be a very strong difference in means between the two populations based on the actual and percent differences. When you include consideration of the p-value, which is 0.2536, it further confirms that it's not very likely these are two populations with significantly different means. 
 
-*??? What does the confidence interval tell us here?? ask in office hours!*
 
 ## Meaning of the p-value
 
 The p-value from the two-sample t-test is 0.2536. This means that if the null hypothesis is true (the samples were taken from populations with the same mean diameter size), there is a 25.36% chance that the sample means could have been at least this different by random chance. Because this probability of drawing samples that are this different by random chance is relatively high, it is not sufficient to reject the null hypothesis and say the "annual" and "control" populations have significantly different means. The removal of kelp once during winter at the Naples Reef site does not cause a significant difference in urchin size. 
 
  
-
+## End of task
 
