@@ -58,7 +58,7 @@ ggplot(data = napl_purple_urchins, aes(x = size)) +
 ```
 
 ## Takeaways from the graphs:
-The QQ-plots follow a relatively linear pattern, with a few outliers on each end for both groups. The histograms don't really appear to have a normal distribution. Both groups have values on either side of the central tendency that occur more frequently than the central value. The control group is also right skewed. 
+The QQ-plots do not follow a relatively linear pattern, there are a few outliers on each end for both groups and quite a few gaps between values. The histograms don't appear to have a normal distribution with a bell-shaped curve. Both groups have values on either side of the central tendency that occur more frequently than the central value itself, which makes the data look more bimodal than bell-shaped. The control group is also right skewed. 
 
 ## Find summary statistics 
 
@@ -69,7 +69,8 @@ treatment_stats <- napl_purple_urchins %>%
             sd_treatment = sd(size), 
             n = n(), 
             min_treatment = min(size), 
-            max_treatment = max(size))
+            max_treatment = max(size), 
+            median_treatment = median(size))
 ```
 
 ## Perform a two-sample t-test 
