@@ -59,7 +59,7 @@ urchins_stats <- urchins %>%
 
 
 ## Section 1 - Part 3: Analysis of exploratory graphs and summary statistics 
-The graph for purple urchins is left skewed and has a central tendency of 4.47 cm. The graph for red urchins is closer to a normal distribution (symmetric) and has a central tendency of 6.78 cm. The difference in mean urchin diameter for purple urchins and red urchins is 2.307 cm, and the percent difference is 41.02%.The range of red urchin diameter measurements is larger than the range of purple urchin diameter measurements because the graph for red urchins is wider and more spread along the x-axis (has a greater variance within the group), whereas the graph for purple urchins is more narrow (has a smaller variance within the group). 
+The graph for purple urchins is left skewed and has a central tendency of 4.47 cm. The graph for red urchins is closer to a normal distribution (symmetric) and has a central tendency of 6.78 cm. The medians of each sample is relatively close to the mean. The actual difference in mean urchin diameter for purple urchins and red urchins is 2.307 cm, and the percent difference is 41.02%.The range of red urchin diameter measurements is larger than the range of purple urchin diameter measurements because the graph for red urchins is wider and more spread along the x-axis (has a greater variance within the group), whereas the graph for purple urchins is more narrow (has a smaller variance within the group). 
 
 ## Section 2: Explore purple urchin counts by site and year 
 
